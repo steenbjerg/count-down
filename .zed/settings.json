@@ -1,0 +1,40 @@
+{
+  "lsp": {
+    "jdtls": {
+      "settings": {
+        "java": {
+          "import": {
+            "gradle": {
+              "enabled": true,
+              "wrapper": {
+                "enabled": true,
+              },
+            },
+            "maven": {
+              "enabled": false,
+            },
+          },
+          "configuration": {
+            "updateBuildConfiguration": "automatic",
+          },
+        },
+      },
+    },
+  },
+  "file_types": {
+    "Groovy": ["*.gradle"],
+  },
+  "languages": {
+    "Java": {
+      "prettier": {
+        "enabled": false,
+      },
+      "formatter": {
+        "external": {
+          "command": "/home/steenbjerg/bin/google-java-format_linux-x86-64",
+          "arguments": ["-"],
+        },
+      },
+    },
+  },
+}

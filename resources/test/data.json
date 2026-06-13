@@ -1,0 +1,293 @@
+{
+    "gross-max-price-per-kwh-kr": 5.6878128740436775,
+    "hourly-prices": [
+        {
+            "gros-norlys-price": 1.7797749665000002,
+            "norlys-price": 1.2275499725,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T00:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6936249877500003,
+            "norlys-price": 1.1413999937500001,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T01:00:00"
+        },
+        {
+            "gros-norlys-price": 1.70619998525,
+            "norlys-price": 1.15397499125,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T02:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6935374790000002,
+            "norlys-price": 1.141312485,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T03:00:00"
+        },
+        {
+            "gros-norlys-price": 1.7563125190000002,
+            "norlys-price": 1.204087525,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T04:00:00"
+        },
+        {
+            "gros-norlys-price": 1.84451251525,
+            "norlys-price": 1.29228752125,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T05:00:00"
+        },
+        {
+            "gros-norlys-price": 2.136574969,
+            "norlys-price": 1.584349975,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T06:00:00"
+        },
+        {
+            "gros-norlys-price": 2.5286750365,
+            "norlys-price": 1.9764500425,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T07:00:00"
+        },
+        {
+            "gros-norlys-price": 2.26622493275,
+            "norlys-price": 1.7139999387500002,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T08:00:00"
+        },
+        {
+            "gros-norlys-price": 1.91622493275,
+            "norlys-price": 1.3639999387500001,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T09:00:00"
+        },
+        {
+            "gros-norlys-price": 1.7061124752500003,
+            "norlys-price": 1.1538874812500002,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T10:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6632750277500001,
+            "norlys-price": 1.11105003375,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T11:00:00"
+        },
+        {
+            "gros-norlys-price": 1.64799998775,
+            "norlys-price": 1.09577499375,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T12:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6503249690000001,
+            "norlys-price": 1.098099975,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T13:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6466875027500003,
+            "norlys-price": 1.0944625087500002,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T14:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6466875027500003,
+            "norlys-price": 1.0944625087500002,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T15:00:00"
+        },
+        {
+            "gros-norlys-price": 1.675375019,
+            "norlys-price": 1.1231500250000002,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T16:00:00"
+        },
+        {
+            "gros-norlys-price": 2.47917753875,
+            "norlys-price": 1.3029875187500002,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T17:00:00"
+        },
+        {
+            "gros-norlys-price": 2.67392744625,
+            "norlys-price": 1.49773742625,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T18:00:00"
+        },
+        {
+            "gros-norlys-price": 3.07477751375,
+            "norlys-price": 1.89858749375,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T19:00:00"
+        },
+        {
+            "gros-norlys-price": 2.3774250365,
+            "norlys-price": 1.8252000425000001,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T20:00:00"
+        },
+        {
+            "gros-norlys-price": 2.12874995775,
+            "norlys-price": 1.57652496375,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T21:00:00"
+        },
+        {
+            "gros-norlys-price": 2.00218745775,
+            "norlys-price": 1.44996246375,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T22:00:00"
+        },
+        {
+            "gros-norlys-price": 1.8879999877500002,
+            "norlys-price": 1.3357749937500003,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-05T23:00:00"
+        },
+        {
+            "gros-norlys-price": 1.85429996025,
+            "norlys-price": 1.30207496625,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T00:00:00"
+        },
+        {
+            "gros-norlys-price": 1.74796252775,
+            "norlys-price": 1.19573753375,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T01:00:00"
+        },
+        {
+            "gros-norlys-price": 1.7096000240000002,
+            "norlys-price": 1.15737503,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T02:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6661124752500003,
+            "norlys-price": 1.1138874812500001,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T03:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6616499665000002,
+            "norlys-price": 1.1094249725,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T04:00:00"
+        },
+        {
+            "gros-norlys-price": 1.7553249690000001,
+            "norlys-price": 1.203099975,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T05:00:00"
+        },
+        {
+            "gros-norlys-price": 1.9191999390000003,
+            "norlys-price": 1.3669749450000002,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T06:00:00"
+        },
+        {
+            "gros-norlys-price": 2.0972375065,
+            "norlys-price": 1.5450125125,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T07:00:00"
+        },
+        {
+            "gros-norlys-price": 2.0444375189999997,
+            "norlys-price": 1.4922125249999998,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T08:00:00"
+        },
+        {
+            "gros-norlys-price": 1.7975999790000001,
+            "norlys-price": 1.245374985,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T09:00:00"
+        },
+        {
+            "gros-norlys-price": 1.659600024,
+            "norlys-price": 1.10737503,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T10:00:00"
+        },
+        {
+            "gros-norlys-price": 1.5708624602499999,
+            "norlys-price": 1.01863746625,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T11:00:00"
+        },
+        {
+            "gros-norlys-price": 1.5607999752500001,
+            "norlys-price": 1.00857498125,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T12:00:00"
+        },
+        {
+            "gros-norlys-price": 1.5522375065,
+            "norlys-price": 1.0000125125000001,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T13:00:00"
+        },
+        {
+            "gros-norlys-price": 1.56406245775,
+            "norlys-price": 1.01183746375,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T14:00:00"
+        },
+        {
+            "gros-norlys-price": 1.5668625215,
+            "norlys-price": 1.0146375275,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T15:00:00"
+        },
+        {
+            "gros-norlys-price": 1.5836124752500003,
+            "norlys-price": 1.0313874812500001,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T16:00:00"
+        },
+        {
+            "gros-norlys-price": 2.2565650049999997,
+            "norlys-price": 1.080374985,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T17:00:00"
+        },
+        {
+            "gros-norlys-price": 2.3547025175,
+            "norlys-price": 1.1785124974999999,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T18:00:00"
+        },
+        {
+            "gros-norlys-price": 2.29976500125,
+            "norlys-price": 1.12357498125,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T19:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6955375240000001,
+            "norlys-price": 1.14331253,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T20:00:00"
+        },
+        {
+            "gros-norlys-price": 1.655225024,
+            "norlys-price": 1.10300003,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T21:00:00"
+        },
+        {
+            "gros-norlys-price": 1.6071750214999998,
+            "norlys-price": 1.0549500274999999,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T22:00:00"
+        },
+        {
+            "gros-norlys-price": 1.589387469,
+            "norlys-price": 1.037162475,
+            "recommendation": "BUY_POWER",
+            "time": "2023-04-06T23:00:00"
+        }
+    ]
+}

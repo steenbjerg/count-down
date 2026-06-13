@@ -1,0 +1,64 @@
+import javax.swing.ToolTipManager$insideTimerAction
+plugins {
+  id 'application'
+  id 'org.graalvm.buildtools.native' version '1.1.0'
+  id 'com.diffplug.spotless' version '7.0.4'
+}
+
+repositories {
+	mavenCentral()
+}
+
+group "dk.stonemountain.demo"
+
+spotless {
+    java {
+        googleJavaFormat('1.35.0')
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+dependencies {
+    implementation 'jakarta.json.bind:jakarta.json.bind-api:3.0.1'
+    implementation 'org.eclipse:yasson:3.0.4'
+}
+
+
+application {
+    mainClass.set('dk.stonemountain.count.down.Main')
+}
+
+graalvmNative {
+    binaries.all {
+		resources.autodetect()
+        verbose = true
+    }
+
+    binaries.main {
+        imageName = 'count-down'
+        mainClass = 'dk.stonemountain.count.down.Main'
+		// buildArgs.addAll([
+        //     "-J-Xmx12G"
+        // ])
+    }
+
+	agent {
+		enabled = true
+		defaultMode = "standard"
+
+		modes {
+			standard {
+			}
+		}
+
+		metadataCopy {
+			inputTaskNames.add("run")
+			outputDirectories.add("src/main/resources/META-INF/native-image")
+			mergeWithExisting = true
+		}
+	}
+}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=java-demo - url handler
+Comment=Open java-demo
+GenericName=java-demo
+Exec=/usr/bin/java-demo %U
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Utilities;Development;JavaFX;
+MimeType=x-scheme-handler/fs-java-demo;
+Keywords=javafx;

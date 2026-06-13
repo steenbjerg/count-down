@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="400.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane hgap="5.0" layoutX="94.0" layoutY="72.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints minWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+          <RowConstraints minHeight="10.0" />
+          <RowConstraints minHeight="10.0" />
+        </rowConstraints>
+         <children>
+            <Label text="Header:" />
+            <TextField fx:id="header" maxWidth="1.7976931348623157E308" promptText="Short header describing the counter" GridPane.columnIndex="1" />
+            <Label text="Expiration:" GridPane.rowIndex="2" />
+            <HBox maxWidth="1.7976931348623157E308" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <DatePicker fx:id="expirationDate" maxWidth="1.7976931348623157E308" HBox.hgrow="SOMETIMES" />
+                  <TextField fx:id="expirationTime" maxWidth="1.7976931348623157E308" promptText="HH:mm" HBox.hgrow="SOMETIMES" />
+               </children>
+            </HBox>
+            <Label text="Time Unit:" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="timeUnit" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Start Time:" GridPane.rowIndex="1" />
+            <HBox maxWidth="1.7976931348623157E308" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <DatePicker fx:id="startDate" maxWidth="1.7976931348623157E308" HBox.hgrow="SOMETIMES" />
+                  <TextField fx:id="startTime" maxWidth="1.7976931348623157E308" promptText="HH:mm" HBox.hgrow="SOMETIMES" />
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
