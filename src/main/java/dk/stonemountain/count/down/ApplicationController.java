@@ -14,6 +14,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 
 public class ApplicationController {
   private static final Logger LOG = Logger.getLogger(ApplicationController.class.getName());
@@ -28,6 +30,39 @@ public class ApplicationController {
     LOG.info("Application starting up");
     counters.setItems(counterList);
     counters.setCellFactory(listView -> new CounterCell(this::handleUserAction));
+
+    // Allow dropping into the empty area of the ListView to move item to the end
+    counters.setOnDragOver(
+        e -> {
+          Dragboard db = e.getDragboard();
+          if (db.hasString()) e.acceptTransferModes(TransferMode.MOVE);
+          e.consume();
+        });
+
+    counters.setOnDragDropped(
+        e -> {
+          LOG.info(() -> String.format("Drag dropped: %s", e.getDragboard().getString()));
+          Dragboard db = e.getDragboard();
+          boolean success = false;
+          if (db.hasString()) {
+            try {
+              int draggedIdx = Integer.parseInt(db.getString());
+              var list = counters.getItems();
+              if (draggedIdx >= 0 && draggedIdx < list.size()) {
+                Counter draggedItem = list.remove(draggedIdx);
+                list.add(draggedItem);
+                counters.getSelectionModel().clearAndSelect(list.size() - 1);
+                storeCounters();
+              }
+              success = true;
+            } catch (NumberFormatException ignore) {
+              // ignore invalid payload
+            }
+          }
+          e.setDropCompleted(success);
+          e.consume();
+        });
+
     loadCounters();
 
     ticker =

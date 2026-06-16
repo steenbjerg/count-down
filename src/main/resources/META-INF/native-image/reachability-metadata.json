@@ -1537,6 +1537,12 @@
       ]
     },
     {
+      "type": "javafx.scene.input.Clipboard"
+    },
+    {
+      "type": "javafx.scene.input.Dragboard"
+    },
+    {
       "type": "javafx.scene.layout.AnchorPane",
       "methods": [
         {

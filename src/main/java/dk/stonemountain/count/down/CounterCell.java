@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.function.Consumer;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,12 +17,18 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class CounterCell extends ListCell<Counter> {
+  private static final Logger LOG = Logger.getLogger(CounterCell.class.getName());
+
   public enum UserActionType {
     NEW_RECORD,
     CHANGED_RECORD,
@@ -80,6 +87,86 @@ public class CounterCell extends ListCell<Counter> {
     } catch (IOException e) {
       throw new RuntimeException("Failed to load fxml", e);
     }
+
+    // Drag-and-drop reorder handlers on the cell itself
+    // Start drag with the source index encoded as text
+    this.setOnDragDetected(
+        e -> {
+          if (isEmpty()) return;
+          Dragboard db = startDragAndDrop(TransferMode.MOVE);
+          ClipboardContent content = new ClipboardContent();
+          content.putString(Integer.toString(getIndex()));
+          db.setContent(content);
+          db.setDragView(snapshot(null, null));
+          e.consume();
+        });
+
+    // Accept move while dragging over a different cell
+    this.setOnDragOver(
+        e -> {
+          Dragboard db = e.getDragboard();
+          if (e.getGestureSource() != this && db.hasString()) {
+            e.acceptTransferModes(TransferMode.MOVE);
+          }
+          e.consume();
+        });
+
+    // Simple visual feedback
+    this.setOnDragEntered(
+        e -> {
+          if (e.getGestureSource() != this && !isEmpty()) setOpacity(0.3);
+        });
+    this.setOnDragExited(
+        e -> {
+          if (!isEmpty()) setOpacity(1.0);
+        });
+
+    // Perform the reorder on drop
+    this.setOnDragDropped(
+        e -> {
+          Dragboard db = e.getDragboard();
+          boolean success = false;
+          var list = getListView().getItems();
+          LOG.info(
+              () ->
+                  String.format(
+                      "Drag dropped on cell at index %d, draggedIdx=%s, isEmpty=%b",
+                      getIndex(), db.getString(), isEmpty()));
+
+          if (db.hasString()) {
+            int draggedIdx = Integer.parseInt(db.getString());
+            if (draggedIdx >= 0 && draggedIdx < list.size()) {
+              Counter draggedItem = list.get(draggedIdx);
+              if (!isEmpty()) {
+                int dropIdx = getIndex();
+
+                if (draggedIdx != dropIdx) {
+                  list.remove(draggedIdx);
+                  if (dropIdx > draggedIdx) dropIdx--; // account for shift after removal
+                  list.add(dropIdx, draggedItem);
+                  getListView().getSelectionModel().select(dropIdx);
+                  success = true;
+                }
+              } else {
+                list.remove(draggedIdx);
+                list.add(draggedItem);
+                getListView().getSelectionModel().select(draggedItem);
+                success = true;
+              } // ignore invalid payload
+
+              // Notify controller so it can persist
+              if (userActionConsumer != null && success) {
+                userActionConsumer.accept(
+                    new UserAction(UserActionType.CHANGED_RECORD, draggedItem));
+              }
+            }
+          }
+
+          e.setDropCompleted(success);
+          e.consume();
+        });
+
+    this.setOnDragDone(DragEvent::consume);
   }
 
   @FXML
