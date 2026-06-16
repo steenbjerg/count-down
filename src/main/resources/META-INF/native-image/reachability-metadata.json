@@ -549,6 +549,22 @@
       ]
     },
     {
+      "type": "com.sun.javafx.geom.Path2D",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "int",
+            "byte[]",
+            "int",
+            "float[]",
+            "int"
+          ]
+        }
+      ]
+    },
+    {
       "type": "com.sun.javafx.logging.PrintLogger",
       "methods": [
         {
@@ -652,7 +668,33 @@
       ]
     },
     {
+      "type": "com.sun.prism.shader.DrawCircle_Color_Loader",
+      "methods": [
+        {
+          "name": "loadShader",
+          "parameterTypes": [
+            "com.sun.prism.ps.ShaderFactory",
+            "java.lang.String",
+            "java.io.InputStream"
+          ]
+        }
+      ]
+    },
+    {
       "type": "com.sun.prism.shader.DrawPgram_Color_Loader",
+      "methods": [
+        {
+          "name": "loadShader",
+          "parameterTypes": [
+            "com.sun.prism.ps.ShaderFactory",
+            "java.lang.String",
+            "java.io.InputStream"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.prism.shader.FillCircle_Color_Loader",
       "methods": [
         {
           "name": "loadShader",
@@ -679,6 +721,19 @@
     },
     {
       "type": "com.sun.prism.shader.FillPgram_LinearGradient_PAD_Loader",
+      "methods": [
+        {
+          "name": "loadShader",
+          "parameterTypes": [
+            "com.sun.prism.ps.ShaderFactory",
+            "java.lang.String",
+            "java.io.InputStream"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.prism.shader.FillRoundRect_Color_Loader",
       "methods": [
         {
           "name": "loadShader",
@@ -1826,6 +1881,12 @@
       ]
     },
     {
+      "type": "javafx.scene.shape.Arc"
+    },
+    {
+      "type": "javafx.scene.shape.Circle"
+    },
+    {
       "type": "javafx.scene.shape.LineTo"
     },
     {
@@ -2013,6 +2074,10 @@
     },
     {
       "module": "java.base",
+      "glob": "jdk/internal/icu/impl/data/icudt76b/uprops.icu"
+    },
+    {
+      "module": "java.base",
       "glob": "sun/text/resources/WordBreakIteratorData"
     },
     {
@@ -2089,7 +2154,15 @@
     },
     {
       "module": "javafx.graphics",
+      "glob": "com/sun/prism/es2/glsl/DrawCircle_Color.frag"
+    },
+    {
+      "module": "javafx.graphics",
       "glob": "com/sun/prism/es2/glsl/DrawPgram_Color.frag"
+    },
+    {
+      "module": "javafx.graphics",
+      "glob": "com/sun/prism/es2/glsl/FillCircle_Color.frag"
     },
     {
       "module": "javafx.graphics",
@@ -2098,6 +2171,10 @@
     {
       "module": "javafx.graphics",
       "glob": "com/sun/prism/es2/glsl/FillPgram_LinearGradient_PAD.frag"
+    },
+    {
+      "module": "javafx.graphics",
+      "glob": "com/sun/prism/es2/glsl/FillRoundRect_Color.frag"
     },
     {
       "module": "javafx.graphics",

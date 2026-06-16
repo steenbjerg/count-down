@@ -9,13 +9,20 @@ import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Popup;
 
 public class ApplicationController {
   private static final Logger LOG = Logger.getLogger(ApplicationController.class.getName());
@@ -31,39 +38,10 @@ public class ApplicationController {
     counters.setItems(counterList);
     counters.setCellFactory(listView -> new CounterCell(this::handleUserAction));
 
-    // Allow dropping into the empty area of the ListView to move item to the end
-    counters.setOnDragOver(
-        e -> {
-          Dragboard db = e.getDragboard();
-          if (db.hasString()) e.acceptTransferModes(TransferMode.MOVE);
-          e.consume();
-        });
-
-    counters.setOnDragDropped(
-        e -> {
-          LOG.info(() -> String.format("Drag dropped: %s", e.getDragboard().getString()));
-          Dragboard db = e.getDragboard();
-          boolean success = false;
-          if (db.hasString()) {
-            try {
-              int draggedIdx = Integer.parseInt(db.getString());
-              var list = counters.getItems();
-              if (draggedIdx >= 0 && draggedIdx < list.size()) {
-                Counter draggedItem = list.remove(draggedIdx);
-                list.add(draggedItem);
-                counters.getSelectionModel().clearAndSelect(list.size() - 1);
-                storeCounters();
-              }
-              success = true;
-            } catch (NumberFormatException ignore) {
-              // ignore invalid payload
-            }
-          }
-          e.setDropCompleted(success);
-          e.consume();
-        });
-
     loadCounters();
+
+    // Attach completion listeners to loaded counters
+    counterList.forEach(this::attachCompletionListener);
 
     ticker =
         new Timeline(
@@ -126,6 +104,62 @@ public class ApplicationController {
     }
   }
 
+  private void attachCompletionListener(Counter c) {
+    c.stateProperty()
+        .addListener(
+            (obs, oldState, newState) -> {
+              if (oldState == Counter.State.ACTIVE && newState == Counter.State.COMPLETED) {
+                // Show a small celebratory overlay when a counter completes
+                String message =
+                    (c.getDescription() == null || c.getDescription().isBlank())
+                        ? "Done!"
+                        : c.getDescription() + " reached 0!";
+                showCelebration(message);
+              }
+            });
+  }
+
+  private void showCelebration(String message) {
+    // Build a lightweight overlay: vector "happy" graphic with text over it (no emoji font needed)
+    var graphic = HappyGraphicFactory.create();
+
+    var text = new Label(message);
+    text.setTextFill(Color.WHITE);
+    text.setStyle("-fx-font-size: 28px; -fx-font-weight: bold;");
+    text.setEffect(new DropShadow(10, Color.color(0, 0, 0, 0.8)));
+
+    var backBtn = new Button("Back");
+    backBtn.setDefaultButton(true);
+    backBtn.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+
+    var centerBox = new VBox(16, graphic, text, backBtn);
+    centerBox.setAlignment(Pos.CENTER);
+
+    var content = new StackPane(centerBox);
+    content.setStyle(
+        "-fx-background-color: rgba(0,0,0,0.55); -fx-background-radius: 16; -fx-padding: 24;");
+
+    var popup = new Popup();
+    popup.getContent().add(content);
+    popup.setAutoHide(false); // keep until user dismisses
+
+    backBtn.setOnAction(e -> popup.hide());
+
+    var window = counters.getScene().getWindow();
+    popup.show(window);
+
+    // Center after showing (so we have actual layout bounds)
+    Platform.runLater(
+        () -> {
+          double pw = content.getWidth();
+          double ph = content.getHeight();
+          double x = window.getX() + (window.getWidth() - pw) / 2;
+          double y = window.getY() + (window.getHeight() - ph) / 2;
+          popup.setX(x);
+          popup.setY(y);
+        });
+  }
+
   @FXML
   private void doQuit() {
     ticker.stop();
@@ -148,6 +182,7 @@ public class ApplicationController {
         .ifPresent(
             c -> {
               c.refresh();
+              attachCompletionListener(c);
               counterList.add(c);
               counters.getSelectionModel().select(c);
               storeCounters();
