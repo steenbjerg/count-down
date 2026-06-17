@@ -10,6 +10,7 @@ import javafx.beans.property.StringProperty;
 
 public class Counter {
   public enum State {
+    BEFORE_START,
     ACTIVE,
     COMPLETED,
   }
@@ -47,18 +48,24 @@ public class Counter {
   }
 
   private void updateProgress() {
-    if (expiration.get() != null && expiration.get().isAfter(LocalDateTime.now())) {
+    if (expiration.get() != null
+        && expiration.get().isAfter(LocalDateTime.now())
+        && startTime.get().isBefore(LocalDateTime.now())) {
       var totalDuration = Duration.between(startTime.get(), expiration.get());
       var elapsedDuration = Duration.between(startTime.get(), LocalDateTime.now());
       this.progress.set(elapsedDuration.toNanos() / (double) totalDuration.toNanos());
     } else {
-      this.progress.set(1.0);
+      this.progress.set(0.0);
     }
   }
 
   private void updateState() {
     if (expiration.get() != null && expiration.get().isAfter(LocalDateTime.now())) {
-      this.state.set(State.ACTIVE);
+      if (startTime.get().isBefore(LocalDateTime.now())) {
+        this.state.set(State.ACTIVE);
+      } else {
+        this.state.set(State.BEFORE_START);
+      }
     } else {
       this.state.set(State.COMPLETED);
     }

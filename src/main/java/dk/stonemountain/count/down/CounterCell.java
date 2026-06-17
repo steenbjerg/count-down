@@ -271,6 +271,8 @@ public class CounterCell extends ListCell<Counter> {
               Bindings.createObjectBinding(
                   () ->
                       switch (counter.getState()) {
+                        case BEFORE_START ->
+                            new Background(new BackgroundFill(Color.BLUE, null, null));
                         case ACTIVE -> new Background(new BackgroundFill(Color.GREEN, null, null));
                         case COMPLETED -> new Background(new BackgroundFill(Color.RED, null, null));
                       },
