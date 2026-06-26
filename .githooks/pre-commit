@@ -1,0 +1,13 @@
+#!/bin/sh
+# Format staged Java files using Gradle Spotless (google-java-format AOSP)
+
+files=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.java$' || true)
+[ -z "$files" ] && exit 0
+
+# Run spotlessApply only on those files
+./gradlew -q spotlessApply -PspotlessFiles="$files" || exit 1
+
+# Re-add any files changed by formatting
+echo "$files" | xargs git add
+
+exit 0

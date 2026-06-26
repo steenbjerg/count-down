@@ -32,9 +32,12 @@
       "formatter": {
         "external": {
           "command": "/home/steenbjerg/bin/google-java-format_linux-x86-64",
-          "arguments": ["-"],
+          "arguments": ["--aosp", "-"],
         },
       },
+      "tab_size": 4,
+      "hard_tabs": false,
+      "format_on_save": "on",
     },
   },
 }

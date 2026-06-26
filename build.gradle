@@ -13,7 +13,7 @@ group "dk.stonemountain.demo"
 
 spotless {
     java {
-        googleJavaFormat('1.35.0')
+        googleJavaFormat('1.35.0').aosp()
     }
 }
 
